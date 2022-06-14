@@ -1,3 +1,11 @@
+#ifndef CHECKER
+#define CHECKER
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <fcntl.h>
+#include <unistd.h>
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -27,3 +35,8 @@ typedef struct instruction_s
         char *opcode;
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+
+
+instruction_t *get_instr(const char *path, int line);
+
+#endif /*CHECKER*/

@@ -9,5 +9,7 @@
 
 int main(int argc, char **argv)
 {
-	
+	instruction_t *instr;
+
+	instr = get_instr(argv[1], 1);
 }
