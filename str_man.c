@@ -7,22 +7,19 @@
  * Return: instruction_t
  */
 
-instruction_t *get_instr(const char *path, int line)
+instruction_t *get_instr(char *line)
 {
-	int fd;
+	int len, err, argu;
 	instruction_t *instr;
-	char *msg;
+	char *opcode;
 
 	instr = allocate(sizeof(instruction_t));
-	msg = allocate(1000);
-	fd = open(path, O_RDONLY);
-	if (fd < 0)
-	{
-		sprintf(msg, "Error: Can't open file %s\n", path);
-		print_err(msg);
-	}
+	opcode = allocate(25);
 	
-	close(fd);
-		
+	
+	strtok(line, " ");
+	opcode = strtok(NULL, " ");
+	instr->opcode = opcode;
+	
 	return (instr);
 }
