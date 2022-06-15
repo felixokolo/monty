@@ -11,12 +11,18 @@ instruction_t *get_instr(const char *path, int line)
 {
 	int fd;
 	instruction_t *instr;
+	char *msg;
 
-	instr = malloc(sizeof(instruction_t));
-	if (instr < 0)
-		write(STDERR_FILENO, "ERROR malloc\n", 12);
+	instr = allocate(sizeof(instruction_t));
+	msg = allocate(1000);
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
-		write(STDERR_FILENO, "ERROR\n", 6);
+	{
+		sprintf(msg, "Error: Can't open file %s\n", path);
+		print_err(msg);
+	}
+	
+	close(fd);
+		
 	return (instr);
 }
