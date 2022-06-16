@@ -11,10 +11,10 @@
 
 int main(int argc, char **argv)
 {
-	char *opcode_list[] = {"push", "pall"};
+	char *opcode_list[] = {"push", "pall", "pint"};
 
-	void (*fun_list[])(stack_t **stack, unsigned int line_number) = {push, pall};
-	int fd, err = 1, line_num = 0, pos, operand;
+	void (*fun_list[])(stack_t **stack, unsigned int line_number) = {push, pall, pint};
+	int fd, err = 1, line_num = 0, pos, operand, len = 3;
 	char *msg, *opcode;
 	stack_t *stacks = NULL;
 	instruction_t *instr;
@@ -36,7 +36,7 @@ int main(int argc, char **argv)
 		if (err < 0)
 			break;
 		get_opcode(opcode, &operand, msg);
-		pos = get_instr(opcode_list, opcode, 2);
+		pos = get_instr(opcode_list, opcode, len);
 		line_num++;
 		if (pos < 0)
 		{
