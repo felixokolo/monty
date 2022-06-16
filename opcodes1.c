@@ -16,13 +16,52 @@ void push(stack_t **stack, unsigned int line_number)
 	else
 	{
 		new_stack->next = (*stack);
-		(*stack)->prev = new_stack;
+		(*stack) = new_stack;
 	}
 	
-	printf("added %d\n", line_number);
+	//printf("added %d\n", line_number);
 	
 }
 void pall(stack_t **stack, unsigned int line_number)
 {
+	stack_t *tmp;
+	if ((*stack) == NULL)
+	{
+		return;
+		
+	}
+	else
+	{
+		tmp = *stack;
+		while(tmp)
+		{
+			printf("%d", tmp->n);
+			if (tmp->next)
+				printf("\n");
+			tmp = tmp->next;
+		}
+	}
 	
+	//printf("added %d\n", line_number);
+}
+
+void pint(stack_t **stack, unsigned int line_number)
+{
+	stack_t *tmp;
+	if ((*stack) == NULL)
+	{
+		return;
+		
+	}
+	else
+	{
+		tmp = *stack;
+		while(tmp)
+		{
+			printf("%d\n", tmp->n);
+			tmp = tmp->next;
+		}
+	}
+	
+	//printf("added %d\n", line_number);
 }

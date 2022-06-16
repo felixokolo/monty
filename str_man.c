@@ -18,7 +18,7 @@ int get_opcode(char *dst, int *operand, char *line)
 	token = strtok_r(copy, " \t", &saveptr);
 	strcpy(dst, token);
 	*operand = atoi(strtok_r(NULL, " \t", &saveptr));
-	printf("operand = %d\n", *operand);
+	//printf("operand = %d\n", *operand);
 	free(copy);
 	return 1;
 }
@@ -58,10 +58,17 @@ int get_line(int *fd, char *dst)
 	do{
 		len = read(*fd, &c, 1);
 		
-		if (len == 0 || c == '\n' || c == '\0')
+		if (len == 0 || c == '\n')
 		{
-			*(dst + tot) = '\0';
-			break;
+			if ((c == '\n' || len == 0) && tot > 0)
+			{
+				*(dst + tot) = '\0';
+				break;
+			}
+			else if(len == 0 && tot == 0)
+				return (-1);
+			else
+				continue;
 		}
 		*(dst + tot) = c;
 		tot += len;
@@ -75,11 +82,11 @@ int get_instr(instruction_t *instr, char *opcode_list[], char *opcode, int len)
 {
 	int pos = 0;
 	
-	printf("lent of arr = %d\n", len);
-	printf("gets here ops %s\n", opcode);
+	//printf("lent of arr = %d\n", len);
+	//printf("gets here ops %s\n", opcode);
 	while(pos < len)
 	{
-		printf("gets here %s\n", opcode_list[pos]);
+		//printf("gets here %s\n", opcode_list[pos]);
 		if (strcmp(opcode_list[pos], opcode) == 0)
 		break;
 		

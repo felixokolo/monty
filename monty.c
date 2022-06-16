@@ -7,7 +7,7 @@
 								pall}
 								};*/
 
-char *opcode_list[] = {"push", "pall"};
+char *opcode_list[] = {"push", "pall", "pint"};
 void (*fun_list[])(stack_t **stack, unsigned int line_number) = {push, pall};
 
 /**
@@ -51,9 +51,9 @@ int main(int argc, char **argv)
 		err = get_line(&fd, msg);
 		if (err < 0)
 			break;
-		printf("line %s\n", msg);
+		//printf("line %s\n", msg);
 		get_opcode(opcode, &operand, msg);
-		printf("ops %s\n", opcode);
+		//printf("ops %s\n", opcode);
 		
 		pos = get_instr(instr, opcode_list, opcode, 2);
 		//printf("opcode %s\n", instr->opcode);
@@ -67,8 +67,8 @@ int main(int argc, char **argv)
 		instr->opcode = opcode;
 		
 		execute_line(instr, &stacks, operand);
-		printf("top stack %d\n", stacks->n);
-		printf("opcode %s\n", instr->opcode);
+		//printf("top stack %d\n", stacks->n);
+		//printf("opcode %s\n", instr->opcode);
 	}
 	
 	close(fd);
