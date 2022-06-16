@@ -19,6 +19,12 @@ void *allocate(size_t size)
 	return (allocated);
 }
 
+
+/**
+ * free_instr - Frees memory
+ * @instr: memory to free
+ * Return: void
+ */
 void free_instr(instruction_t *instr)
 {
 	free(instr->opcode);
