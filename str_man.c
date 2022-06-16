@@ -1,5 +1,4 @@
 #include "monty.h"
-int line_num;
 
 /**
  * get_opcode - Gets instruction from file
