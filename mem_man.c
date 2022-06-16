@@ -10,8 +10,8 @@ void *allocate(size_t size)
 {
 	void *allocated;
 
-	allocated = malloc(sizeof(instruction_t));
-	if (allocated < 0)
+	allocated = malloc(size);
+	if (allocated == NULL)
 	{
 		print_err("Error: malloc failed\n");
 		exit(EXIT_FAILURE);

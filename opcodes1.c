@@ -19,10 +19,9 @@ void push(stack_t **stack, unsigned int line_number)
 		(*stack) = new_stack;
 	}
 	
-	//printf("added %d\n", line_number);
 	
 }
-void pall(stack_t **stack, unsigned int line_number)
+void pall(stack_t **stack, unsigned int __attribute__((__unused__)) line_number)
 {
 	stack_t *tmp;
 	if ((*stack) == NULL)
@@ -41,11 +40,9 @@ void pall(stack_t **stack, unsigned int line_number)
 			tmp = tmp->next;
 		}
 	}
-	
-	//printf("added %d\n", line_number);
 }
 
-void pint(stack_t **stack, unsigned int line_number)
+void pint(stack_t **stack, unsigned int __attribute__((__unused__)) line_number)
 {
 	stack_t *tmp;
 	if ((*stack) == NULL)
@@ -63,5 +60,4 @@ void pint(stack_t **stack, unsigned int line_number)
 		}
 	}
 	
-	//printf("added %d\n", line_number);
 }

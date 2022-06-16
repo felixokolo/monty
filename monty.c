@@ -1,12 +1,6 @@
 #include "monty.h"
 #include <stdio.h>
 
-/*instruction_t *instr_list[] = { {"push",
-								push},
-								{"pall",
-								pall}
-								};*/
-
 char *opcode_list[] = {"push", "pall", "pint"};
 void (*fun_list[])(stack_t **stack, unsigned int line_number) = {push, pall};
 
@@ -20,7 +14,7 @@ void (*fun_list[])(stack_t **stack, unsigned int line_number) = {push, pall};
 int main(int argc, char **argv)
 {
 	instruction_t *instr;
-	int fd, err = 1, len, line_num = 1, pos, operand;
+	int fd, err = 1, line_num = 1, pos, operand;
 	char *msg, *opcode;
 	stack_t *stacks = NULL;
 	
@@ -33,7 +27,6 @@ int main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 
-	//mon_file = open(argv[1], "r");
 	fd = open(argv[1], O_RDONLY);
 	msg = allocate(300);
 	instr = allocate(sizeof(instruction_t));
@@ -51,32 +44,27 @@ int main(int argc, char **argv)
 		err = get_line(&fd, msg);
 		if (err < 0)
 			break;
-		//printf("line %s\n", msg);
 		get_opcode(opcode, &operand, msg);
-		//printf("ops %s\n", opcode);
-		
-		pos = get_instr(instr, opcode_list, opcode, 2);
-		//printf("opcode %s\n", instr->opcode);
+		pos = get_instr(opcode_list, opcode, 2);
 		if (pos < 0)
 		{
 			sprintf(msg, "L %d: unknown instruction %s\n", line_num, opcode);
 			print_err(msg);
 		}
-		//printf("opcode %s\n", instr->opcode);
 		instr->f = fun_list[pos];
 		instr->opcode = opcode;
 		
 		execute_line(instr, &stacks, operand);
-		//printf("top stack %d\n", stacks->n);
-		//printf("opcode %s\n", instr->opcode);
 	}
 	
 	close(fd);
 	free(msg);
 	free_instr(instr);
+	return (0);
 }
 
 int execute_line(instruction_t *instr, stack_t **stack, int operand)
 {
 	(instr->f)(stack, operand);
+	return (1);
 }

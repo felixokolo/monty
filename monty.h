@@ -39,7 +39,6 @@ typedef struct instruction_s
 } instruction_t;
 
 extern char *opcode_list[];
-//extern instruction_t *instr_list[];
 
 
 int get_opcode(char *dst, int *operand, char *line);
@@ -51,7 +50,7 @@ void free_instr(instruction_t *instr);
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
-int get_instr(instruction_t *instr, char *opcode_list[], char *opcode, int len);
+int get_instr(char *opcode_list[], char *opcode, int len);
 int execute_line(instruction_t *instr, stack_t **stack, int operand);
 
 #endif /*CHECKER*/
