@@ -7,7 +7,6 @@
  */
 void add(stack_t **stack, unsigned int line_number)
 {
-	stack_t *tmp;
 	int a;
 	char *msg = allocate(300);
 
@@ -57,7 +56,6 @@ void nop(stack_t __attribute__((__unused__)) **stack,
  */
 void sub(stack_t **stack, unsigned int line_number)
 {
-	stack_t *tmp;
 	int a;
 	char *msg = allocate(300);
 
@@ -90,7 +88,6 @@ void sub(stack_t **stack, unsigned int line_number)
  */
 void divs(stack_t **stack, unsigned int line_number)
 {
-	stack_t *tmp;
 	int a;
 	char *msg = allocate(300);
 
@@ -128,7 +125,6 @@ void divs(stack_t **stack, unsigned int line_number)
  */
 void mul(stack_t **stack, unsigned int line_number)
 {
-	stack_t *tmp;
 	int a;
 	char *msg = allocate(300);
 
