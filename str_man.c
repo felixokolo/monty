@@ -29,7 +29,7 @@ int get_opcode(char *dst, int *operand, char *line)
  * @dst: Line to get instruction
  * Return: int
  */
-int get_line(int *fd, char *dst)
+int get_line(int *fd, char *dst, int *line_num)
 {
 	int len = 0, tot = 0;
 	char c;
@@ -50,7 +50,7 @@ int get_line(int *fd, char *dst)
 			}
 			else
 			{
-				line_num++;
+				(*line_num)++;
 				continue;
 			}
 		}

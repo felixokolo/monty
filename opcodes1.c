@@ -80,14 +80,14 @@ void pint(stack_t **stack,
  * @line_number: operand
  * Return: void
  */
-void pop(stack_t **stack, unsigned int __attribute__((__unused__)) line_number)
+void pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp;
 	char *msg = allocate(300);
 
 	if ((*stack) == NULL)
 	{
-		sprintf(msg, "L%d: can't pop an empty stack\n", line_num);
+		sprintf(msg, "L%d: can't pop an empty stack\n", line_number);
 		print_err(msg);
 		return;
 	}

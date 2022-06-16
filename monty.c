@@ -1,7 +1,6 @@
 #include "monty.h"
 #include <stdio.h>
 
-int line_num = 0;
 /**
  * main - Main monty function
  * @argc: number of arguments
@@ -15,7 +14,7 @@ int main(int argc, char **argv)
 
 	void (*fun_list[])(stack_t **stack, unsigned int line_number) = {
 		push, pall, pint, pop};
-	int fd, err = 1, pos, operand, len = 4;
+	int fd, err = 1, pos, operand, line_num = 0, len = 4;
 	char *msg, *opcode;
 	stack_t *stacks = NULL;
 	instruction_t *instr;
@@ -33,7 +32,7 @@ int main(int argc, char **argv)
 	}
 	while (err)
 	{
-		err = get_line(&fd, msg);
+		err = get_line(&fd, msg, &line_num);
 		if (err < 0)
 			break;
 		get_opcode(opcode, &operand, msg);
@@ -46,7 +45,7 @@ int main(int argc, char **argv)
 		}
 		instr->f = fun_list[pos];
 		instr->opcode = opcode;
-		execute_line(instr, &stacks, operand);
+		execute_line(instr, &stacks, operand, line_num);
 	}
 	close(fd);
 	free(msg);
@@ -62,8 +61,11 @@ int main(int argc, char **argv)
  * Return: 0
  */
 
-int execute_line(instruction_t *instr, stack_t **stack, int operand)
+int execute_line(instruction_t *instr, stack_t **stack, int operand, int line_num)
 {
-	(instr->f)(stack, operand);
+	if (strcmp(instr->opcode, "pop") == 0)
+		(instr->f)(stack, line_num);
+	else
+		(instr->f)(stack, operand);
 	return (1);
 }
