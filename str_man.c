@@ -16,7 +16,9 @@ int get_opcode(char *dst, int *operand, char *line)
 	strcpy(copy, line);
 	token = strtok(copy, " \t");
 	strcpy(dst, token);
-	*operand = atoi(strtok(NULL, " \t"));
+	token = strtok(NULL, " \t");
+	if (token != NULL)
+	*operand = atoi(token);
 	free(copy);
 	return 1;
 }

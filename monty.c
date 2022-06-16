@@ -38,7 +38,6 @@ int main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 	
-	
 	while (err)
 	{
 		err = get_line(&fd, msg);
