@@ -12,6 +12,7 @@ int print_err(const char *text)
 
 	len = strlen(text);
 	write(STDERR_FILENO, text, len);
+	exit(EXIT_FAILURE);
 	return (len);
 }
 

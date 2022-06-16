@@ -18,3 +18,10 @@ void *allocate(size_t size)
 	}
 	return (allocated);
 }
+
+void free_instr(instruction_t *instr)
+{
+	free(instr->opcode);
+	free(instr);
+}
+

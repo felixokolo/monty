@@ -7,8 +7,7 @@
 #include <unistd.h>
 #include <string.h>
 
-extern char *opcode_list[];
-extern int (*fun[])(int, int);
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -39,10 +38,19 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+extern char *opcode_list[];
+//extern instruction_t *instr_list[];
 
-instruction_t *get_instr(char *line);
+
+int get_opcode(char *dst, int *operand, char *line);
 int print_out(const char *text);
 int print_err(const char *text);
 void *allocate(size_t size);
+int get_line(int *fd, char *dst);
+void free_instr(instruction_t *instr);
+void push(stack_t **stack, unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number);
+int get_instr(instruction_t *instr, char *opcode_list[], char *opcode, int len);
+int execute_line(instruction_t *instr, stack_t **stack, int operand);
 
 #endif /*CHECKER*/
