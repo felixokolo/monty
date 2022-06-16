@@ -7,6 +7,7 @@
 #include <unistd.h>
 #include <string.h>
 
+extern int line_num;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -50,6 +51,7 @@ void free_instr(instruction_t *instr);
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
 int get_instr(char *opcode_list[], char *opcode, int len);
 int execute_line(instruction_t *instr, stack_t **stack, int operand);
 

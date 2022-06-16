@@ -1,7 +1,7 @@
 #include "monty.h"
 #include <stdio.h>
 
-
+int line_num = 0;
 /**
  * main - Main monty function
  * @argc: number of arguments
@@ -11,10 +11,11 @@
 
 int main(int argc, char **argv)
 {
-	char *opcode_list[] = {"push", "pall", "pint"};
+	char *opcode_list[] = {"push", "pall", "pint", "pop"};
 
-	void (*fun_list[])(stack_t **stack, unsigned int line_number) = {push, pall, pint};
-	int fd, err = 1, line_num = 0, pos, operand, len = 3;
+	void (*fun_list[])(stack_t **stack, unsigned int line_number) = {
+		push, pall, pint, pop};
+	int fd, err = 1, pos, operand, len = 4;
 	char *msg, *opcode;
 	stack_t *stacks = NULL;
 	instruction_t *instr;

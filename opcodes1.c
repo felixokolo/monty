@@ -73,3 +73,31 @@ void pint(stack_t **stack,
 		printf("%d\n", (*stack)->n);
 	}
 }
+
+/**
+ * pop - function for push opcode
+ * @stack: stack memory
+ * @line_number: operand
+ * Return: void
+ */
+void pop(stack_t **stack, unsigned int __attribute__((__unused__)) line_number)
+{
+	stack_t *tmp;
+	char *msg = allocate(300);
+
+	if ((*stack) == NULL)
+	{
+		sprintf(msg, "L%d: can't pop an empty stack\n", line_num);
+		print_err(msg);
+		return;
+	}
+	else
+	{
+		tmp = *stack;
+		*stack = (*stack)->next;
+		if(*stack)
+		(*stack)->prev = NULL;
+		free(tmp);
+	}
+	free(msg);
+}

@@ -1,5 +1,5 @@
 #include "monty.h"
-
+int line_num;
 
 /**
  * get_opcode - Gets instruction from file
@@ -50,7 +50,10 @@ int get_line(int *fd, char *dst)
 				return (-1);
 			}
 			else
+			{
+				line_num++;
 				continue;
+			}
 		}
 		*(dst + tot) = c;
 		tot += len;
