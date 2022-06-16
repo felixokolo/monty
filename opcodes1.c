@@ -101,3 +101,38 @@ void pop(stack_t **stack, unsigned int line_number)
 	}
 	free(msg);
 }
+
+/**
+ * swap - function for push opcode
+ * @stack: stack memory
+ * @line_number: operand
+ * Return: void
+ */
+void swap(stack_t **stack, unsigned int line_number)
+{
+	stack_t *tmp;
+	char *msg = allocate(300);
+
+	if ((*stack) == NULL )
+	{
+		sprintf(msg, "L%d: can't swap, stack too short\n", line_number);
+		print_err(msg);
+		return;
+	}
+	else if ((*stack)->next == NULL )
+	{
+		sprintf(msg, "L%d: can't swap, stack too short\n", line_number);
+		print_err(msg);
+		return;
+	}
+	else
+	{
+		tmp = (*stack)->next;
+		(*stack)->next = tmp->next;
+		(*stack)->prev = tmp->prev;
+		tmp->prev = NULL;
+		tmp->next = *stack;
+		(*stack) = tmp;
+	}
+	free(msg);
+}

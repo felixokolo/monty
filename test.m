@@ -8,10 +8,5 @@
 
 pall
 pint
-pop
+swap
 pall
-pop
-pall
-pop
-pall
-pop
