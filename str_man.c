@@ -15,12 +15,15 @@ int get_opcode(char *dst, int *operand, char *line)
 	copy = allocate(sizeof(strlen(line)));
 	strcpy(copy, line);
 	token = strtok(copy, " \t");
-	strcpy(dst, token);
+	if (*token == '#')
+		strcpy(dst, "nop");
+	else
+		strcpy(dst, token);
 	token = strtok(NULL, " \t");
 	if (token != NULL)
 	*operand = atoi(token);
 	free(copy);
-	return (1);
+	return (1); 
 }
 
 /**

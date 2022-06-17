@@ -15,4 +15,4 @@ pall
 push 10
 pall
 mul
-pall
+			#pall
