@@ -31,3 +31,21 @@ void free_instr(instruction_t *instr)
 	free(instr);
 }
 
+/**
+ * free_stack - Frees memory
+ * @instr: memory to free
+ * Return: void
+ */
+void free_stack(stack_t **stack)
+{
+	stack_t *tmp = *stack;
+	if(*stack)
+	{
+		while(*stack)
+		{
+			tmp = (*stack)->next;
+			free(*stack);
+			*stack = tmp;
+		}
+	}
+}

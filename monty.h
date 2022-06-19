@@ -47,6 +47,7 @@ int print_err(const char *text);
 void *allocate(size_t size);
 int get_line(int *fd, char *dst, int *line_num);
 void free_instr(instruction_t *instr);
+void free_stack(stack_t **stack);
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);

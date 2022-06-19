@@ -52,8 +52,8 @@ int main(int argc, char **argv)
 	}
 	close(fd);
 	free(msg);
-	free(instr);
-	free(opcode);
+	free_instr(instr);
+	free_stack(&stacks);
 	return (0);
 }
 
