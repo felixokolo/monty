@@ -74,7 +74,8 @@ void pchar(stack_t **stack, unsigned int line_number)
  * @line_number: operand
  * Return: void
  */
-void pstr(stack_t **stack, unsigned int line_number)
+void pstr(stack_t **stack,
+	unsigned int __attribute__((__unused__)) line_number)
 {
 	stack_t *tmp;
 
