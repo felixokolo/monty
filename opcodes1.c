@@ -7,7 +7,7 @@
  */
 void push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *new_stack = allocate(sizeof(stack_t));
+	stack_t *new_stack = allocate(sizeof(stack_t)), *tmp;
 
 	new_stack->prev = NULL;
 	new_stack->next = NULL;
@@ -17,11 +17,19 @@ void push(stack_t **stack, unsigned int line_number)
 	{
 		(*stack) = new_stack;
 	}
-	else
+	else if (mode == 0)
 	{
 		new_stack->next = (*stack);
 		(*stack)->prev = new_stack;
 		(*stack) = new_stack;
+	}
+	else if (mode == 1)
+	{
+		tmp = *stack;
+		while (tmp->next)
+			tmp = tmp->next;
+		new_stack->prev = tmp;
+		tmp->next = new_stack;
 	}
 }
 
