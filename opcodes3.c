@@ -57,7 +57,7 @@ void pchar(stack_t **stack, unsigned int line_number)
 	else
 	{
 		a = (*stack)->n;
-		if (a > 127)
+		if (a > 127 || a < 0)
 		{
 			sprintf(msg, "L%d: can't pchar, value out of range\n", line_number);
 			print_err(msg);
