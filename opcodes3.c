@@ -94,6 +94,6 @@ void pstr(stack_t **stack,
 			printf("%c", tmp->n);
 			tmp = tmp->next;
 		}
-		printf("\n0\n");
+		printf("\n");
 	}
 }
