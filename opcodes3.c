@@ -97,3 +97,69 @@ void pstr(stack_t **stack,
 		printf("\n");
 	}
 }
+
+/**
+ * rotl - function for push opcode
+ * @stack: stack memory
+ * @line_number: operand
+ * Return: void
+ */
+void rotl(stack_t **stack,
+	unsigned int __attribute__((__unused__)) line_number)
+{
+	stack_t *tmp;
+
+	if ((*stack) == NULL )
+	{
+		return;
+	}
+	else if ((*stack)->next == NULL )
+	{
+		return;
+	}
+	else
+	{
+		tmp = (*stack);
+		while(tmp->next)
+			tmp = tmp->next;
+		tmp->next = *stack;
+		(*stack)->prev = tmp;
+		tmp = (*stack)->next;
+		(*stack)->next = NULL;
+		(*stack) = tmp;
+		(*stack)->prev = NULL;
+	}
+}
+
+/**
+ * rotr - function for push opcode
+ * @stack: stack memory
+ * @line_number: operand
+ * Return: void
+ */
+void rotr(stack_t **stack,
+	unsigned int __attribute__((__unused__)) line_number)
+{
+	stack_t *tmp;
+
+	if ((*stack) == NULL )
+	{
+		return;
+	}
+	else if ((*stack)->next == NULL )
+	{
+		return;
+	}
+	else
+	{
+		tmp = (*stack);
+		while(tmp->next)
+			tmp = tmp->next;
+		(*stack)->prev = tmp;
+		tmp->next = *stack;
+		tmp->prev->next = NULL;
+		(*stack) = tmp;
+		(*stack)->prev = NULL;
+	}
+	
+}
