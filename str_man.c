@@ -13,7 +13,7 @@ int get_opcode(char *dst, int *operand, char *line)
 	char *copy, *token, *args[30];
 	int n = 0;
 
-	copy = allocate(sizeof(strlen(line)));
+	copy = allocate(strlen(line) + 1);
 	strcpy(copy, line);
 	token = strtok(copy, " \t");
 	if (*token == '#')
@@ -25,9 +25,8 @@ int get_opcode(char *dst, int *operand, char *line)
 		token = strtok(NULL, " \t");
 		if (token != NULL)
 		{
-			args[n] = malloc(strlen(token) + 1);
+			args[n] = allocate(strlen(token) + 1);
 			strcpy(args[n], token);
-			printf("gets here %s \n", args[n]);
 			n++;
 		}
 		
