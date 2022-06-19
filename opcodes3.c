@@ -76,24 +76,23 @@ void pchar(stack_t **stack, unsigned int line_number)
  */
 void pstr(stack_t **stack, unsigned int line_number)
 {
-	int a; 
-	char *msg = allocate(300);
+	stack_t *tmp;
 
-	if ((*stack) == NULL )
+	if ((*stack) == NULL)
 	{
-		sprintf(msg, "L%d: can't pchar, stack empty\n", line_number);
-		print_err(msg);
 		return;
 	}
 	else
 	{
-		a = (*stack)->n;
-		if (a > 127 || a < 0)
+		tmp = *stack;
+		while (tmp)
 		{
-			sprintf(msg, "L%d: can't pchar, value out of range\n", line_number);
-			print_err(msg);
+			if (tmp->n == 0)
+				break;
+			else
+			printf("%c", tmp->n);
+			tmp = tmp->next;
 		}
-		printf("%c\n", (*stack)->n);
+		printf("\n0\n");
 	}
-	free(msg);
 }
