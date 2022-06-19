@@ -12,11 +12,12 @@ int main(int argc, char **argv)
 {
 	char *opcode_list[] = {"push", "pall", "pint",
 		"pop", "swap", "add", "nop", "sub", "div",
-		"mul", "mod"};
+		"mul", "mod", "pchar"};
 
 	void (*fun_list[])(stack_t **stack, unsigned int line_number) = {
-		push, pall, pint, pop, swap, add, nop, sub, divs, mul, mod};
-	int fd, err = 1, pos, operand, line_num = 0, len = 11;
+		push, pall, pint, pop, swap, add, nop, sub, divs, mul, mod,
+		pchar};
+	int fd, err = 1, pos, operand, line_num = 0, len = 12;
 	char *msg, *opcode;
 	stack_t *stacks = NULL;
 	instruction_t *instr;
@@ -65,7 +66,7 @@ int main(int argc, char **argv)
 
 int execute_line(instruction_t *instr, stack_t **stack, int operand, int line_num)
 {
-	if (strcmp(instr->opcode, "push") == 0)
+	if (strcmp(instr->opcode, "push") == 0 || strcmp(instr->opcode, "pchar") == 0)
 		(instr->f)(stack, operand);
 	else
 		(instr->f)(stack, line_num);

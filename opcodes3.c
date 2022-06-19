@@ -35,3 +35,34 @@ void mod(stack_t **stack, unsigned int line_number)
 	}
 	free(msg);
 }
+
+
+/**
+ * pchar - function that prints an ascii character
+ * @stack: stack memory
+ * @line_number: operand
+ * Return: void
+ */
+void pchar(stack_t **stack, unsigned int line_number)
+{
+	int a;
+	char *msg = allocate(300);
+
+	if ((*stack) == NULL )
+	{
+		sprintf(msg, "L%d: can't pchar, stack empty\n", line_number);
+		print_err(msg);
+		return;
+	}
+	else
+	{
+		a = (*stack)->n;
+		if (a > 127)
+		{
+			sprintf(msg, "L%d: can't pchar, value out of range\n", line_number);
+			print_err(msg);
+		}
+		printf("%c\n", (*stack)->n);
+	}
+	free(msg);
+}
