@@ -12,7 +12,5 @@ add
 pall
 sub
 pall
-push 10
-pall
-mul
-			#pall
+push 129
+pchar

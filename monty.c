@@ -66,7 +66,7 @@ int main(int argc, char **argv)
 
 int execute_line(instruction_t *instr, stack_t **stack, int operand, int line_num)
 {
-	if (strcmp(instr->opcode, "push") == 0 || strcmp(instr->opcode, "pchar") == 0)
+	if (strcmp(instr->opcode, "push") == 0)
 		(instr->f)(stack, operand);
 	else
 		(instr->f)(stack, line_num);
