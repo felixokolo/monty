@@ -16,10 +16,13 @@ int get_opcode(char *dst, int *operand, char *line)
 	copy = allocate(strlen(line) + 1);
 	strcpy(copy, line);
 	token = strtok(copy, " \t");
-	if (*token == '#')
-		strcpy(dst, "nop");
+	if (token)
+		if (*token == '#')
+			strcpy(dst, "nop");
+		else
+			strcpy(dst, token);
 	else
-		strcpy(dst, token);
+		strcpy(dst, "nop");
 	while (token != NULL)
 	{
 		token = strtok(NULL, " \t");
