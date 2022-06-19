@@ -32,7 +32,7 @@ int get_opcode(char *dst, int *operand, char *line)
 		
 	}
 		
-	if (n > 0)
+	if (strcmp(dst, "push") == 0)
 	*operand = atoi(args[0]);
 	/*else if (n > 1)
 		strcpy(dst, "nop");*/
