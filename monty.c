@@ -53,6 +53,7 @@ int main(int argc, char **argv)
 	close(fd);
 	free(msg);
 	free_instr(instr);
+	free(opcode);
 	return (0);
 }
 
