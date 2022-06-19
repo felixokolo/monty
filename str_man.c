@@ -32,10 +32,10 @@ int get_opcode(char *dst, int *operand, char *line)
 		
 	}
 		
-	if (n == 1)
+	if (n > 0)
 	*operand = atoi(args[0]);
-	else if (n > 1)
-		strcpy(dst, "nop");
+	/*else if (n > 1)
+		strcpy(dst, "nop");*/
 	free(copy);
 	while (n > 0)
 	{
